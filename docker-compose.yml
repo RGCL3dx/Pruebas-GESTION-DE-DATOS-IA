@@ -1,0 +1,10 @@
+services:
+  db_ia: # Nombre del servicio
+    image: postgres:15 # Usaremos la versión 15 de Postgres
+    container_name: mi_contenedor_postgres
+    environment:
+      POSTGRES_USER: mi_usuario
+      POSTGRES_PASSWORD: mi_password123
+      POSTGRES_DB: telco_db
+    ports:
+      - "5432:5432" # Conecta el puerto de la "caja" con tu PC
