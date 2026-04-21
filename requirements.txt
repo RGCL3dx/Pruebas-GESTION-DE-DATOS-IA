@@ -1,0 +1,3 @@
+pandas          # Para manejar tablas de datos (DataFrames)
+sqlalchemy      # El puente que conecta Python con bases de datos
+psycopg2-binary # El "traductor" específico para PostgreSQL

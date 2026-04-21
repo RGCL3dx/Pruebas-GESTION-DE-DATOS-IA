@@ -1,10 +1,19 @@
+version: '3.8' # Versión del motor de Docker Compose
+
 services:
-  db_ia: # Nombre del servicio
-    image: postgres:15 # Usaremos la versión 15 de Postgres
-    container_name: mi_contenedor_postgres
+  db: # Nombre del servicio
+    image: postgres:15 # Usamos la imagen oficial de PostgreSQL versión 15
+    container_name: postgres_telco # Nombre que tendrá tu contenedor en Docker
+    restart: always # Si la PC se reinicia, el contenedor también
     environment:
+      # Definimos las credenciales de acceso a la base de datos
       POSTGRES_USER: mi_usuario
-      POSTGRES_PASSWORD: mi_password123
-      POSTGRES_DB: telco_db
+      POSTGRES_PASSWORD: mi_password
+      POSTGRES_DB: telco_db # Nombre de la base de datos que se creará
     ports:
-      - "5432:5432" # Conecta el puerto de la "caja" con tu PC
+      - "5432:5432" # Conecta el puerto 5432 de tu PC con el del contenedor
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Para que los datos no se borren al apagar Docker
+
+volumes:
+  postgres_data: # Espacio de almacenamiento persistente
